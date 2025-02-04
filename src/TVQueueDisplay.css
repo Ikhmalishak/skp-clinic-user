@@ -1,0 +1,126 @@
+.tv-display {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header Improvements */
+.header {
+    font-weight: bold;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding: 0 30px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+.date,
+.time {
+    font-size: 56px;
+    white-space: nowrap;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.horizontal-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 0px;
+}
+
+.now-serving-horizontal {
+    flex: 1;
+    /* border: 3px solid #f44336; */
+    border: 3px solid #ff9901;
+    /* background-color: #ffebee; */
+    background-color: #feebe1;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.now-serving-horizontal .queue-number {
+    font-size: 140px;
+    /* color: #d32f2f; */
+    color: #ff9900;
+    font-weight: bold;
+}
+
+.waiting-completed {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: 20px; /* Matches the left margin of the "Now Serving" section */
+    margin-right: 20px; /* Matches the right margin of the "Now Serving" section */
+}
+
+.waiting-left-side,
+.completed-right-side {
+    flex: 1;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.waiting-left-side {
+    border: 3px solid #f44336;
+}
+
+.completed-right-side {
+    /* border: 3px solid #ff9800; */
+    border: 3px solid #4caf50;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 350px); /* Adjust height based on your layout */
+}
+
+.waiting-left-side .queue-item,
+.completed-right-side .completed-item {
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.waiting-left-side .queue-item {
+    background-color: #f9cad1;
+}
+
+.completed-right-side .completed-item {
+    /* background-color: #ffe0b2; */
+    background-color: #c8e6c9;
+}
+
+/* Last item in both sections should not have bottom margin */
+.queue-item:last-child,
+.completed-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Align All Section Headers */
+.now-serving-horizontal h2,
+.waiting-left-side h2,
+.completed-right-side h2 {
+    margin: 0;
+    font-size: 30px;
+    padding: 10px 0;
+    font-weight: bold;
+}
