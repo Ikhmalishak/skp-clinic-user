@@ -10,35 +10,24 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Get the current time
-    const currentTime = new Date();
-    const startTime = new Date(currentTime.setHours(8, 0, 0)); // 8:00 AM
-    const endTime = new Date(currentTime.setHours(12, 0, 0)); // 12:00 PM
-
-    // Check if current time is within allowed range
-    if (currentTime < startTime || currentTime > endTime) {
-      alert("Registration is available only from 8:00 AM to 12:00 PM.");
-      return;
-    }
-
     if (!id.match(/^\d{6}$/)) {
       alert("Employee ID must be exactly 6 digits!");
       return;
     }
 
     try {
-      // Check employee existence and get queue number
       const response = await axios.post('http://127.0.0.1:8000/api/register', {
         employee_id: id
       });
 
+      // If there's an error message in the response, show it
       if (response.data.error) {
         alert(response.data.error);
         return;
       }
 
       const queueNumber = response.data.queue_number;
-      
+
       // Store employeeID in localStorage
       localStorage.setItem("employeeID", id);
 
@@ -46,10 +35,15 @@ const Register = () => {
       setId("");
       navigate("/queue-status");
     } catch (error) {
-      console.error("Error registering user:", error);
-      alert("Error: Unable to register. Please try again.");
+      // Handle error response from the backend
+      if (error.response) {
+        alert(error.response.data.error || "An error occurred during registration.");
+      } else {
+        alert("Error: Unable to register. Please try again.");
+      }
     }
   };
+
 
   return (
     <div className="register-page">

@@ -25,11 +25,11 @@ const TVQueueDisplay = () => {
           `${formattedQueueNumber}`
         );
         englishUtterance.lang = "en-US";
-        englishUtterance.rate = 0.1;
+        englishUtterance.rate = 0.3;
 
         const malayUtterance = new SpeechSynthesisUtterance(`${queueNumber}`);
         malayUtterance.lang = "ms-MY";
-        malayUtterance.rate = 0.1;
+        malayUtterance.rate = 0.3;
 
         window.speechSynthesis.speak(englishUtterance);
         window.speechSynthesis.speak(malayUtterance);
